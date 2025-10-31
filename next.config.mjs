@@ -10,6 +10,15 @@ const nextConfig = {
       },
     ],
   },
+
+  async rewrites() {
+    return [
+      {
+        source: "/api/fake-products",
+        destination: "https://fakestoreapi.com/products",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
