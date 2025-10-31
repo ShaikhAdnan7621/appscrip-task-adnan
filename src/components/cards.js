@@ -7,7 +7,7 @@ export default function ProductCard({ product }) {
     return (
         <div key={product.id} className="product-card ">
             <div className='image-frame'>
-                <Image src={product.image} alt={`Image of ${product.title}`} width={500} height={500} />
+                <Image src={product.image} alt={`Image ${product.title}`} width={500} height={500} className='product-image'/>
             </div>
             <div className='product-details '>
                 <div className='row product-title '>
