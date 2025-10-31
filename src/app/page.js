@@ -29,13 +29,11 @@ export default async function Home({ searchParams }) {
     </div>
   );
 }
-
 async function fetchProducts() {
   try {
-    const response = await axios.get('https://fakestoreapi.com/products', {
+    const response = await axios.get(process.env.EXTERNAL_API_URL, {
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
       },
     });
 
