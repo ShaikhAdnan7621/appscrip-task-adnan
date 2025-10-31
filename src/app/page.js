@@ -35,8 +35,10 @@ async function fetchProducts() {
     const response = await axios.get('https://fakestoreapi.com/products', {
       headers: {
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
       },
     });
+
     return response.data.map((product, index) => ({
       ...product,
       date: new Date(new Date().getTime() - (Math.random() * 1000 * 60 * 60 * 24 * 30 * (index + 1)))
