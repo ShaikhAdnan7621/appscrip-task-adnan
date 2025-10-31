@@ -32,7 +32,11 @@ export default async function Home({ searchParams }) {
 
 async function fetchProducts() {
   try {
-    const response = await axios.get('https://fakestoreapi.com/products');
+    const response = await axios.get('https://fakestoreapi.com/products', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
     return response.data.map((product, index) => ({
       ...product,
       date: new Date(new Date().getTime() - (Math.random() * 1000 * 60 * 60 * 24 * 30 * (index + 1)))
