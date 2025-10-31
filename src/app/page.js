@@ -1,95 +1,46 @@
+export const dynamic = "force-dynamic";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import HomePage from "@/components/HomePage";
+import axios from 'axios';
 
-export default function Home() {
+export default async function Home({ searchParams }) {
+  const params = await searchParams; // ✅ Fix: await it
+  let products = await fetchProducts();
+
+  const sort = params?.sort;
+
+  if (sort) {
+    if (sort === 'newest') {
+      products.sort((a, b) => new Date(b.date) - new Date(a.date));
+    } else if (sort === 'popular') {
+      products.sort((a, b) => b.rating.rate - a.rating.rate);
+    } else if (sort === 'price-high-low') {
+      products.sort((a, b) => b.price - a.price);
+    } else if (sort === 'price-low-high') {
+      products.sort((a, b) => a.price - b.price);
+    }
+  }
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
+        <HomePage products={products} searchParams={params} />
       </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
+}
+
+async function fetchProducts() {
+  try {
+    const response = await axios.get('https://fakestoreapi.com/products');
+    return response.data.map((product, index) => ({
+      ...product,
+      date: new Date(new Date().getTime() - (Math.random() * 1000 * 60 * 60 * 24 * 30 * (index + 1)))
+    }));
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    return [];
+  }
 }

@@ -1,15 +1,14 @@
-import { Geist, Geist_Mono } from "next/font/google";
+
+import localFont from 'next/font/local';
 import "./globals.css";
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const simplon = localFont({
+  src: './Simplon Norm.ttf',
+  display: 'swap',
+  variable: '--font-simplon',
+})
 
 export const metadata = {
   title: "Create Next App",
@@ -19,8 +18,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={simplon.variable}>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -1,0 +1,335 @@
+.footer {
+    background-color: #000000;
+    padding: 79px 8% 20px;
+    color: #ffffff;
+
+    .upperrow {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+
+        .upperleft {
+            width: 60%;
+
+            p {
+                margin-top: 24px;
+                margin-bottom: 51px;
+            }
+
+            .connectboxrow {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                gap: 16px;
+
+
+                input {
+                    flex-grow: 1;
+                    height: 48px;
+                    max-width: 380px;
+                    padding: 4px 12px;
+                }
+
+                button {
+                    width: 184px;
+                    height: 48px;
+                    border-radius: 5px;
+                    border: 1px solid #ffffff;
+                    opacity: 0.3;
+                    color: #ffffff;
+                    background-color: #000000;
+                    font-weight: medium;
+                    font-size: 18px;
+                }
+
+
+            }
+
+
+        }
+
+        .upperright {
+            width: 40%;
+
+            /*  hello*/
+
+            .contactdetailscontainer {
+                display: flex;
+                flex-direction: column;
+
+                .saprator {
+                    display: none;
+                }
+
+                .mailtext {
+                    margin-top: 16px;
+                    margin-bottom: 24px;
+                }
+            }
+
+            .currencyrow {
+                display: flex;
+                flex-direction: row;
+                gap: 5px;
+                align-items: center;
+                margin: 16px 0;
+
+
+                .usaicon {
+                    width: 24px;
+                    height: 24px;
+                    object-fit: cover;
+                    overflow: hidden;
+                    border-radius: 100%;
+                    object-position: left center;
+
+                }
+            }
+
+
+
+            .contacteading {
+                margin-bottom: 16px;
+            }
+
+            .currencycontainer {
+                margin-top: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            p {
+                font-size: 12px;
+            }
+
+        }
+    }
+
+    .hrsarator {
+        display: none;
+
+    }
+
+    .hrboldsarator {
+        width: 100%;
+        height: 1px;
+        background-color: #ffffff;
+        margin: 26px 0px 56px 0px;
+    }
+
+    .lowerrow {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+
+
+        .footerlinks {
+            font-weight: 400;
+            font-size: 16px;
+            letter-spacing: 0px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        h2 {
+            font-size: 24px !important;
+        }
+
+        details summary {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details summary:after {
+            content: '▼';
+            font-size: 24px;
+            font-weight: 300;
+        }
+
+        details[open] summary:after {
+            content: '▲';
+        }
+
+
+        .cloumn1,
+        .cloumn2 {
+            width: 30%;
+        }
+
+
+        .linklist {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .cloumn3 {
+            width: 40%;
+
+            .iconlist {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                margin: 24px 0px 56px 0px;
+
+                .socialiconrapper {
+                    width: 32px;
+                    height: 32px;
+                    border: 1px solid white;
+                    border-radius: 100%;
+                    display: grid;
+                    place-items: center;
+
+                    .socialicon {}
+                }
+            }
+
+            .paymentmethodlist {
+                gap: 10px;
+                margin: 16px 0px 0px 0px;
+            }
+        }
+    }
+
+    .copyrightMark {
+        margin: 25px 0px;
+        text-align: center;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 24px 16px 20px 20px;
+
+        .upperrow {
+            width: 100%;
+            flex-direction: column;
+            gap: 0px;
+
+            .upperleft {
+                width: 100%;
+
+                p {
+                    margin-top: 8px;
+                    margin-bottom: 16px;
+                }
+
+                .connectboxrow {
+                    gap: 8px;
+
+                    button {
+                        width: 109px;
+                        height: 48px;
+                        font-size: 16px !important;
+                    }
+                }
+
+
+            }
+
+            .upperright {
+                width: 100%;
+
+                .contactdetailscontainer {
+                    width: 100%;
+                    margin-top: 16px;
+                    margin-bottom: 16px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 10px;
+
+                    .saprator {
+                        display: flex;
+                        font-size: 10px;
+                    }
+
+                    .mailtext {
+                        margin-top: 0px;
+                        margin-bottom: 0px;
+                    }
+                }
+
+                .paymentnote {
+                    display: none;
+                }
+            }
+        }
+
+
+        .lowerrow {
+            flex-direction: column;
+            gap: 0;
+
+            .cloumn1,
+            .cloumn2,
+            .cloumn3 {
+                width: 100%;
+
+            }
+
+
+            details summary {
+                list-style: none;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            details summary::-webkit-details-marker {
+                display: none;
+            }
+
+            details summary:after {
+                content: '▼';
+                font-size: 14px;
+                font-weight: 300;
+            }
+
+            details[open] summary:after {
+                content: '▲';
+            }
+        }
+
+        .hrsarator {
+            display: flex;
+            margin-top: 24px;
+            margin-bottom: 24px;
+            height: 1;
+
+        }
+
+        .hrboldsarator {
+            height: 2px;
+            margin: 24px 0px 16px 0px;
+
+        }
+    }
+}
+
+@media (min-width: 769px) {
+    .footer .lowerrow details {
+        pointer-events: none;
+        /* disable click */
+    }
+
+    .footer .lowerrow details[open]>summary::after {
+        content: "";
+        /* remove toggle icon if any */
+    }
+
+    .footer .lowerrow details>summary::after {
+        content: "";
+        /* remove toggle icon if any */
+    }
+}
